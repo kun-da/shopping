@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.shopping.dao.ReviewsDao">
+
+    <resultMap type="com.shop.shopping.POJO.entity.Reviews" id="ReviewsMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="productId" column="product_id" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="rating" column="rating" jdbcType="INTEGER"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="createdAt" column="created_at" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into shopping.reviews(product_iduser_idratingcommentcreated_at)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.productId}#{entity.userId}#{entity.rating}#{entity.comment}#{entity.createdAt})
+        </foreach>
+    </insert>
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into shopping.reviews(product_iduser_idratingcommentcreated_at)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.productId}#{entity.userId}#{entity.rating}#{entity.comment}#{entity.createdAt})
+        </foreach>
+        on duplicate key update
+product_id = values(product_id) user_id = values(user_id) rating = values(rating) comment = values(comment) created_at = values(created_at)     </insert>
+
+</mapper>
+
