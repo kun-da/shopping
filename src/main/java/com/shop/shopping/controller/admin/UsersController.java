@@ -1,4 +1,4 @@
-package com.shop.shopping.controller;
+package com.shop.shopping.controller.admin;
 
 
 
@@ -20,7 +20,7 @@ import java.util.List;
  * @since 2024-06-09 20:44:14
  */
 @RestController
-@RequestMapping("users")
+@RequestMapping("/users")
 public class UsersController extends ApiController {
     /**
      * 服务对象

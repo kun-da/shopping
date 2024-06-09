@@ -1,4 +1,4 @@
-package com.shop.shopping.controller;
+package com.shop.shopping.controller.admin;
 
 
 
