@@ -6,6 +6,6 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 mybatis:
-  type-aliases-package: com.example.demo.model
+  type-aliases-package: com.shop.shopping.POJO.entity
   mapper-locations: classpath:mapper/*.xml
 
